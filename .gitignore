@@ -24,6 +24,9 @@ profile.cov
 go.work
 go.work.sum
 
+# Generated output
+dist/
+
 # env file
 .env
 
