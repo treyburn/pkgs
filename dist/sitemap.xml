@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://go.treyburn.dev/vanity</loc></url>
-  <url><loc>https://go.treyburn.dev/vanity/pkg/cmd</loc></url>
-  <url><loc>https://go.treyburn.dev/vanity/pkg/config</loc></url>
-  <url><loc>https://go.treyburn.dev/vanity/pkg/generator</loc></url>
-  <url><loc>https://go.treyburn.dev/vanity/pkg/server</loc></url>
-  <url><loc>https://go.treyburn.dev/vanity/pkg/vcs</loc></url>
-</urlset>

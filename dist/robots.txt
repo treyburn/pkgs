@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://go.treyburn.dev/sitemap.xml
