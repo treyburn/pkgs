@@ -1,0 +1,33 @@
+name: Deploy
+
+on:
+  repository_dispatch:
+    types:
+      - vanity-release
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-go@v6
+        with:
+          go-version: 1.26.1
+
+      - name: Install vanity CLI
+        run: go install go.treyburn.dev/vanity@latest
+
+      - name: Generate pages
+        run: vanity generate
+
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy dist/ --project-name=pkgs --branch=main
