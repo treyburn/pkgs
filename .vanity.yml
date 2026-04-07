@@ -1,0 +1,22 @@
+log:
+  level: info
+  format: json
+
+output:
+  dir: dist
+  clean: true
+  index: true
+  not_found: true
+  robots: true
+  sitemap: true
+
+domain: go.treyburn.dev
+
+defaults:
+  branch: main
+  go_source: true
+  redirect_root: https://pkg.go.dev
+
+modules:
+  - name: vanity
+    repo: https://github.com/treyburn/vanity
