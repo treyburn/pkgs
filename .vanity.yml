@@ -1,0 +1,6 @@
+# Your vanity URL domain (may include subdomains and url paths)
+domain: go.treyburn.dev # REQUIRED
+# Module definitions (at least one required)
+modules:
+- name: vanity # REQUIRED: import path becomes {domain}/{name}
+  repo: https://github.com/treyburn/vanity # REQUIRED: full git repository URL
