@@ -8,6 +8,8 @@ on:
     paths:
       - .vanity.yml
       - README.md
+      - .gitignore
+      - .github/workflows/label-pr.yml
 
 jobs:
   label:
