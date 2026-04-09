@@ -30,7 +30,7 @@ modules:
 Then create a PR.
 
 > [!NOTE]                                                                                                                                                   
-> When creating a PR which modifies the `.vanity.yml` - a `skip-release` will automatically be added.
+> When creating a PR which modifies the `.vanity.yml` file - a `skip-release` label will automatically be added to the PR.
 > This allows you to have a new module pre-registered with the pkgs repo, but only publish to go.treyburn.dev when an official release of the new module is cut.
 > 
 > If you want to release these changes immediately when the PR is merged - then simply remove the label.
