@@ -4,7 +4,7 @@ Vanity URL configuration and deployment for my personal Go module index: [go.tre
 
 This repo uses [vanity](https://github.com/treyburn/vanity), a CLI tool I wrote that generates static HTML pages enabling custom import paths like `go.treyburn.dev/vanity` that redirect to the actual host repositories (like GitHub, Codeberg, Tangled, or your own personal Forgejo).
 
-In this repo, my generated pages are deployed to Cloudflare Pages on every merge to `main` and when a registered project publishes a new release.
+In this repo, my generated pages are deployed to Cloudflare Pages on every PR merge (unless given a `skip-release` label) and when a registered project publishes a new release.
 
 Browse the full module index at [go.treyburn.dev](https://go.treyburn.dev).
 
@@ -21,13 +21,19 @@ In the new project's `go.mod`, the module directive must match the vanity domain
 Add an entry to `.vanity.yml` in this repo:
 ```yaml
 modules:
-  - name: vanity
-    repo: https://github.com/treyburn/vanity
+  # append under the previous values in the `modules` field
+  # may also optionally configure overrides specific to this new project
   - name: my-new-project # import path: go.treyburn.dev/my-new-project
     repo: https://github.com/treyburn/my-new-project
 ```
 
-Pushing this change to `main` triggers a deploy, so the vanity URL goes live immediately. You may want to have a tagged release over there first.
+Then create a PR.
+
+> [!NOTE]                                                                                                                                                   
+> When creating a PR which modifies the `.vanity.yml` - a `skip-release` will automatically be added.
+> This allows you to have a new module pre-registered with the pkgs repo, but only publish to go.treyburn.dev when an official release of the new module is cut.
+> 
+> If you want to release these changes immediately when the PR is merged - then simply remove the label.
 
 ### 3. Create a GitHub PAT for cross-repo dispatch
 
