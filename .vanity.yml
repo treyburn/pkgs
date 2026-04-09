@@ -10,6 +10,7 @@ output:
   robots: true
   sitemap: true
 
+# this is the root domain where all our packages will be served from
 domain: go.treyburn.dev
 
 defaults:
