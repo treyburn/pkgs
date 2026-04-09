@@ -4,13 +4,20 @@ on:
   repository_dispatch:
     types:
       - vanity-release
-  push:
+  pull_request:
+    types:
+      - closed
     branches:
       - main
   workflow_dispatch:
 
 jobs:
   deploy:
+    # don't deploy if this event was triggered by a closed PR that included a `skip-release` label
+    if: >-
+      github.event_name != 'pull_request' ||
+      (github.event.pull_request.merged == true &&
+       !contains(github.event.pull_request.labels.*.name, 'skip-release'))
     runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v5
