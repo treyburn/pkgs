@@ -21,3 +21,5 @@ defaults:
 modules:
   - name: vanity
     repo: https://github.com/treyburn/vanity
+  - name: ordered
+    repo: https://github.com/treyburn/ordered
