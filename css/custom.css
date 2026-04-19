@@ -60,6 +60,19 @@ h1:before {
     align-self: stretch;
 }
 
+/* Override: single column on desktop since we don't have an aside */
+@media (min-width: 45rem) {
+    .page {
+        grid-template-areas:
+            "header"
+            "body"
+            "footer";
+        grid-template-columns: minmax(0, 1fr);
+        grid-column-gap: 0;
+        max-width: 47rem;
+    }
+}
+
 .page__footer {
     padding-top: 2rem;
 }
@@ -86,13 +99,6 @@ h1:before {
     margin-left: -1rem;
     margin-right: -1rem;
     margin-top: -1rem;
-}
-
-@media (min-width: 45rem) {
-    .p10k-nav {
-        /* Pull back from the aside column (15rem) + grid gap (2rem), minus page padding (1rem) */
-        margin-right: calc(15rem + 2rem - 1rem);
-    }
 }
 
 .p10k-seg {
