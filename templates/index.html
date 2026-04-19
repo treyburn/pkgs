@@ -1,0 +1,33 @@
+{{define "head"}}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/palette.css">
+<link rel="stylesheet" href="/css/colours.css">
+<link rel="stylesheet" href="/css/typography.css">
+<link rel="stylesheet" href="/css/layout.css">
+<link rel="stylesheet" href="/css/footer.css">
+<link rel="stylesheet" href="/css/risotto.css">
+<link rel="stylesheet" href="/css/custom.css">
+{{end}}
+
+{{define "body"}}
+<div class="page">
+  <header class="page__header">
+    {{template "header" .}}
+  </header>
+  <section class="page__body">
+    <header class="content__header"><h1>pwd</h1></header>
+    <p>/treyburn/go/modules</p>
+    <h2 id="modules"><a class="heading-anchor" href="#modules">#</a> modules</h2>
+    <div class="content__body">
+      <ul>
+        {{- range .Modules}}
+        <li><a href="/{{.Name}}">{{$.Domain}}/{{.Name}}</a></li>
+        {{- end}}
+      </ul>
+    </div>
+  </section>
+  <footer class="page__footer">
+    {{template "footer" .}}
+  </footer>
+</div>
+{{end}}

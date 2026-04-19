@@ -1,0 +1,282 @@
+html {
+    background-color: var(--bg);
+    scrollbar-gutter: stable;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+}
+
+:root {
+    --logo: #7c589e;
+    text-transform: lowercase; /* no gods no masters */
+}
+
+h1:before {
+    content: "$ ";
+    color: var(--base0B);
+}
+
+/* Heading anchor links */
+.heading-anchor,
+.heading-anchor:link,
+.heading-anchor:visited {
+    text-decoration: none;
+    color: var(--muted);
+}
+
+.heading-anchor:hover {
+    color: var(--base0D);
+}
+
+.page {
+    min-height: calc(100vh - 1rem);
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 1rem 1rem 0;
+    grid-template-rows: auto 1fr auto;
+    grid-row-gap: 1rem;
+}
+
+.page__body {
+    min-height: 50vh;
+    align-self: stretch;
+}
+
+/* Override: single column on desktop since we don't have an aside */
+@media (min-width: 45rem) {
+    .page {
+        grid-template-areas:
+            "header"
+            "body"
+            "footer";
+        grid-template-columns: minmax(0, 1fr);
+        grid-column-gap: 0;
+        max-width: 47rem;
+    }
+}
+
+.page__footer {
+    padding-top: 2rem;
+}
+
+/* ===== P10k Navigation ===== */
+:root {
+    --p10k-path: #7c589e;
+    --p10k-branch: #394b70;
+    --p10k-select-bg: var(--base0F);
+    --p10k-fg: var(--base08);
+    --p10k-arrow-w: 0.7rem;
+    --p10k-dot: #3b4261;
+}
+
+.page__header {
+    display: block;
+}
+
+.p10k-nav {
+    display: flex;
+    align-items: stretch;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin-left: -1rem;
+    margin-right: -1rem;
+    margin-top: -1rem;
+}
+
+.p10k-seg {
+    display: flex;
+    align-items: center;
+    padding: 0.45rem 0.75rem;
+    color: var(--p10k-fg);
+    text-decoration: none;
+    white-space: nowrap;
+    font-weight: 600;
+}
+
+a.p10k-seg:link,
+a.p10k-seg:visited {
+    color: var(--p10k-fg);
+    text-decoration: none;
+}
+
+a.p10k-seg:hover,
+a.p10k-seg:active {
+    background: color-mix(in srgb, var(--seg-bg) 75%, black);
+}
+
+.p10k-path {
+    --seg-bg: var(--p10k-path);
+    background: var(--seg-bg);
+}
+
+.p10k-branch {
+    --seg-bg: var(--p10k-branch);
+    background: var(--seg-bg);
+}
+
+.p10k-select-seg {
+    background: var(--p10k-select-bg);
+    position: relative;
+}
+
+.p10k-select-seg:hover {
+    background: color-mix(in srgb, var(--p10k-select-bg) 75%, black);
+}
+
+/* Right-pointing powerline arrow */
+.p10k-arrow-r {
+    position: relative;
+    width: var(--p10k-arrow-w);
+    flex-shrink: 0;
+    background: var(--to);
+    margin-left: -0.35px;
+}
+
+.p10k-arrow-r::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--from);
+    clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+/* Left-pointing powerline arrow */
+.p10k-arrow-l {
+    position: relative;
+    width: var(--p10k-arrow-w);
+    flex-shrink: 0;
+    background: var(--to);
+    margin-right: -0.25px;
+}
+
+.p10k-arrow-l::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--from);
+    clip-path: polygon(100% 0, 0 50%, 100% 100%);
+}
+
+/* Spacer — pushes the dropdown to the right */
+.p10k-dots {
+    flex: 1 1 0;
+    min-width: 0;
+    background-image: radial-gradient(circle, var(--p10k-dot) 2px, transparent 2px);
+    background-size: 0.75rem 100%;
+    background-repeat: repeat-x;
+    background-position: left center;
+}
+
+/* Branch icon */
+.p10k-branch-icon {
+    width: 0.9em;
+    height: 0.9em;
+    margin-right: 0.3em;
+    flex-shrink: 0;
+}
+
+/* Select dropdown */
+.p10k-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    color: var(--p10k-fg);
+    border: none;
+    font: inherit;
+    font-size: 0.9rem;
+    text-transform: lowercase;
+    cursor: pointer;
+    padding: 0;
+    padding-right: 1.2rem;
+    outline: none;
+}
+
+.p10k-select-seg::after {
+    content: '▾';
+    position: absolute;
+    right: 0.4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--p10k-fg);
+    pointer-events: none;
+    font-size: 1.5em;
+}
+
+.p10k-select option {
+    background: var(--bg);
+    color: var(--fg);
+}
+
+/* Branch dropdown (no arrow) */
+.p10k-branch-dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.p10k-branch-dropdown:hover {
+    background: color-mix(in srgb, var(--seg-bg) 75%, black);
+}
+
+.p10k-branch-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    color: var(--p10k-fg);
+    border: none;
+    font: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: lowercase;
+    cursor: pointer;
+    padding: 0;
+    outline: none;
+}
+
+.p10k-branch-select option {
+    background: var(--bg);
+    color: var(--fg);
+}
+
+/* Icons rendered via CSS mask so they inherit currentColor */
+.icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    background-color: var(--base0D);
+    mask-repeat: no-repeat;
+    mask-position: center;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    -webkit-mask-size: contain;
+}
+
+.footer__links a:hover .icon {
+    background-color: var(--base0C);
+}
+
+.icon--github      { mask-image: url(/icons/github.svg);      -webkit-mask-image: url(/icons/github.svg); }
+.icon--linkedin    { mask-image: url(/icons/linkedin.svg);    -webkit-mask-image: url(/icons/linkedin.svg); }
+.icon--paper-plane { mask-image: url(/icons/paper-plane.svg); -webkit-mask-image: url(/icons/paper-plane.svg); }
+.icon--rss         { mask-image: url(/icons/rss.svg);         -webkit-mask-image: url(/icons/rss.svg); }
+.icon--bluesky     { mask-image: url(/icons/bluesky.svg);     -webkit-mask-image: url(/icons/bluesky.svg); }
+
+/* Footer social links: always shown, centered */
+.footer__links {
+    display: block;
+    padding: 0;
+    list-style: none;
+    text-align: center;
+}
+
+.footer__links li {
+    display: inline-block;
+    margin: 0 0.25rem;
+}
+
+.copyright {
+    text-align: center;
+}
