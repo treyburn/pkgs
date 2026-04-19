@@ -13,18 +13,10 @@ body {
     text-transform: lowercase; /* no gods no masters */
 }
 
-.footnote-ref {
-    font-size: 12px;
+h1:before {
+    content: "$ ";
+    color: var(--base0B);
 }
-
-.upper {
-    text-transform: uppercase; /* chaos reigns */
-}
-
-h1:before { content: "$ "; }
-
-/* Remove theme h2-h6 ::before prefixes — now handled by render-heading.html */
-h2:before, h3:before, h4:before, h5:before, h6:before { content: none; }
 
 /* Heading anchor links */
 .heading-anchor,
@@ -38,20 +30,12 @@ h2:before, h3:before, h4:before, h5:before, h6:before { content: none; }
     color: var(--base0D);
 }
 
-h1:before {
-    color: var(--base0B);
-}
-
-.date {
-    font-size: 16px;
-}
-
 .page {
     min-height: calc(100vh - 1rem);
     margin-top: 0;
     margin-bottom: 0;
     padding: 1rem 1rem 0;
-    grid-template-rows: auto 1fr auto auto;
+    grid-template-rows: auto 1fr auto;
     grid-row-gap: 1rem;
 }
 
@@ -147,7 +131,7 @@ a.p10k-seg:active {
     width: var(--p10k-arrow-w);
     flex-shrink: 0;
     background: var(--to);
-    margin-left: -0.25px;
+    margin-left: -0.35px;
 }
 
 .p10k-arrow-r::before {
@@ -255,105 +239,6 @@ a.p10k-seg:active {
     color: var(--fg);
 }
 
-/* Back button on post pages — p10k styled */
-.content__back {
-    margin-top: 2rem;
-}
-
-.back-btn {
-    display: inline-flex;
-    align-items: stretch;
-    text-decoration: none;
-    font-size: 0.9rem;
-    line-height: 1;
-}
-
-.back-btn__arrow {
-    position: relative;
-    width: var(--p10k-arrow-w);
-    flex-shrink: 0;
-    margin-right: -0.25px;
-}
-
-.back-btn__arrow::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: var(--p10k-path);
-    clip-path: polygon(100% 0, 0 50%, 100% 100%);
-}
-
-.back-btn__label {
-    display: flex;
-    align-items: center;
-    padding: 0.4rem 0.75rem;
-    background: var(--p10k-path);
-    color: var(--p10k-fg);
-    font-weight: 600;
-}
-
-.back-btn:hover .back-btn__label {
-    background: color-mix(in srgb, var(--p10k-path) 75%, black);
-}
-
-.back-btn:hover .back-btn__arrow::before {
-    background: color-mix(in srgb, var(--p10k-path) 75%, black);
-}
-
-/* make image round and capped at 240px*/
-.about__image {
-    width: 240px;
-    height: auto;
-    border-radius: 50%;
-}
-
-.about__description {
-    font-weight: normal;
-}
-
-/* Let Chroma inline syntax highlighting colors take precedence over risotto defaults */
-.highlight pre code {
-    color: inherit;
-}
-.highlight span {
-    color: inherit;
-}
-
-/* Preserve original casing in code blocks */
-pre,
-code {
-    text-transform: none;
-}
-
-/* Inline code styling */
-:not(pre) > code {
-    color: var(--base0E);
-}
-
-/* Blockquote styling - opt-in via {.styled-quote} attribute in markdown */
-blockquote.styled-quote {
-    background-color: var(--inner-bg);
-    border-left: 4px solid var(--base0D);
-    padding: 0 0.5rem;
-    margin: 1.5rem 0;
-}
-
-blockquote.styled-quote::before {
-    content: none;
-}
-
-/* Additional custom blockquote styling - useful if there's a conversation going on */
-blockquote.styled-quote-2 {
-    background-color: var(--inner-bg);
-    border-left: 4px solid var(--base0B);
-    padding: 0 0.5rem;
-    margin: 1.5rem 0;
-}
-
-blockquote.styled-quote-2::before {
-    content: none;
-}
-
 /* Icons rendered via CSS mask so they inherit currentColor */
 .icon {
     display: inline-block;
@@ -394,14 +279,4 @@ blockquote.styled-quote-2::before {
 
 .copyright {
     text-align: center;
-}
-
-/* Hide side section on small devices */
-@media (max-width: 45rem) {
-    .page__aside {
-        display: none;
-    }
-    .footer__lang {
-        display: none;
-    }
 }
