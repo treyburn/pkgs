@@ -23,3 +23,12 @@ modules:
     repo: https://github.com/treyburn/vanity
   - name: ordered
     repo: https://github.com/treyburn/ordered
+
+templates:
+  index: templates/index.html
+  partials:
+    - templates/header.html
+    - templates/footer.html
+  assets:
+    - css/
+    - icons/
