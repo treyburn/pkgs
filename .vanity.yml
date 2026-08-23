@@ -23,6 +23,8 @@ modules:
     repo: https://github.com/treyburn/vanity
   - name: ordered
     repo: https://github.com/treyburn/ordered
+  - name: farkle
+    repo: https://github.com/treyburn/farkle
 
 templates:
   index: templates/index.html
